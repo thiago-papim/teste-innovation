@@ -14,7 +14,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-white opacity-30"></div>
 
       <div className="flex flex-col items-center justify-center h-full relative z-10">
-        <h1 className="text-[#80BC00] font-bold sm:text-[32px] text-[25px] text-center mb-10">
+        <h1 className="text-[#9fe900] font-extrabold sm:text-[32px] text-[25px] text-center mb-10 bg-black/60 rounded-4xl px-3 mx-2">
           Bem-vindo a Innovation Brindes
         </h1>
         <div className="gap-4 flex flex-col bg-[#80BC00] sm:p-20 sm:pb-10 py-10 px-5 rounded-xl sm:w-[600px] w-[90%]">
