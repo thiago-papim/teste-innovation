@@ -34,7 +34,7 @@ export default function Itens({ dados }) {
       {dados.map((item, i) => (
         <div key={i} className="mb-10 sm:w-68 w-36 flex flex-col items-center">
           <div className="h-20 mb-2">
-            <p className="font-bold text-xl opacity-80 text-center leading-6 line-clamp-2 overflow-hidden text-ellipsis break-words">
+            <p className="font-bold sm:text-xl opacity-80 text-center leading-6 line-clamp-2 overflow-hidden text-ellipsis break-words">
               {item.nome}
             </p>
             <p className="font-medium text-lg text-center opacity-65">
@@ -55,8 +55,8 @@ export default function Itens({ dados }) {
               width={300}
               height={200}
             />
-            <div className="relative flex border-2 bg-white border-gray-100 mr-5 rounded-tr-xl border-l-0 overflow-visible lg:w-[70%]">
-              <div className="relative z-10 -mt-4 ml-2 bg-white rounded-full p-1">
+            <div className="relative flex border-2 bg-white border-gray-100 mr-5 rounded-tr-xl border-l-0 overflow-visible sm:w-[70%] w-32">
+              <div className="relative z-10 -mt-4 ml-2 bg-white rounded-full p-1 w-16 sm:w-full">
                 <Image
                   src="/images/caixa.svg"
                   alt="embalagem"
@@ -64,7 +64,7 @@ export default function Itens({ dados }) {
                   height={70}
                 />
               </div>
-              <p className="font-extrabold text-gray-500/70 leading-4 text-sm py-2 pl-2">
+              <p className="font-extrabold text-gray-500/70 leading-4 text-sm py-2 pl-2 pr-1 sm:pl-0">
                 com embalagem especial
               </p>
             </div>
@@ -92,8 +92,8 @@ export default function Itens({ dados }) {
                 </React.Fragment>
               ))}
             </div>
-            <div className="flex flex-col items-end w-full px-4 text-gray-500 font-medium sm:-mt-4">
-              <p className="text-left text-sm">
+            <div className="flex flex-col sm:items-end w-full px-3 sm:px-4 text-gray-500 font-medium -mt-4">
+              <p className="sm:text-left text-sm mt-6 sm:mt-0">
                 a partir de <br />
                 <span className="font-extrabold text-2xl leading-5 text-gray-600">
                   R$ {valorFinal(item.valor_home)}
