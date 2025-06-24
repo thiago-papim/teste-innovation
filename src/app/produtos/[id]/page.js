@@ -7,7 +7,9 @@ export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  const response = await fetch(`https://apihomolog.innovationbrindes.com.br/api/site/v2/produto/${id}`);
+  const response = await fetch(
+    `https://apihomolog.innovationbrindes.com.br/api/site/v2/produto/${id}`
+  );
   const data = await response.json();
 
   const titulo = arrumarTextoMaiusculo(data.nome);
@@ -25,8 +27,10 @@ export default async function Produto({ params }) {
     { cache: "no-store" }
   );
   const data = await response.json();
+
   const valorFinal =
     data.valor_home === ("0.00" || "0.0") ? "10.00" : data.valor_home;
+    
   data.valor_home = valorFinal;
 
   const verificaCores = data.cores?.length > 0;
@@ -70,7 +74,7 @@ export default async function Produto({ params }) {
             </div>
           )}
 
-          <CarrinhoItem item={data}/>
+          <CarrinhoItem item={data} />
         </div>
       </div>
     </div>
