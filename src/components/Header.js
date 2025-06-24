@@ -19,7 +19,7 @@ export default function Header() {
   const totalQtd = itens.reduce((total, item) => total + item.qtd, 0);
 
   return (
-    <div className="w-full bg-[#80BC00] p-3 mt-6 flex justify-between items-center">
+    <div className="w-full bg-[#80BC00] p-3 mt-6 flex justify-between items-center sm:px-20">
       <Carrinho open={open} onClose={abrirDrawer(false)} />
       <Link href="/produtos" passHref>
         <Image

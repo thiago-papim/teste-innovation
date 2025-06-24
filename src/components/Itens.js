@@ -30,7 +30,7 @@ export default function Itens({ dados }) {
   };
 
   return (
-    <div className="flex gap-3 flex-wrap justify-center mt-10 px-2">
+    <div className="flex gap-3 flex-wrap justify-center mt-10 px-2 sm:mx-20">
       {dados.map((item, i) => (
         <div key={i} className="mb-10 sm:w-68 w-36 flex flex-col items-center">
           <div className="h-20 mb-3">
