@@ -30,9 +30,9 @@ export default function Itens({ dados }) {
   };
 
   return (
-    <div className="flex sm:gap-8 gap-3 flex-wrap justify-center mt-10 px-2 sm:mx-20">
+    <div className="flex sm:gap-14 gap-3 flex-wrap justify-center mt-10 px-2 sm:mx-20">
       {dados.map((item, i) => (
-        <div key={i} className="mb-10 sm:w-68 w-36 flex flex-col items-center">
+        <div key={i} className="mb-10 sm:w-64 w-36 flex flex-col items-center">
           <div className="h-20 mb-2">
             <p className="font-bold sm:text-xl opacity-80 text-center leading-6 line-clamp-2 overflow-hidden text-ellipsis break-words">
               {item.nome}
