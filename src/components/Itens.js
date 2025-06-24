@@ -73,11 +73,14 @@ export default function Itens({ dados }) {
               {limitarTexto(item.caracteristicas, 60)}
             </p>
             <p className="px-4 text-gray-500/90 font-bold mb-3">Cores:</p>
-            <div className="flex flex-wrap w-56 gap-1.5 px-4">
+            <div className="flex flex-wrap w-full max-w-sm gap-1.5 px-4">
               {coresArr.map((cor, i) => (
                 <React.Fragment key={`${cor}-${i}`}>
                   {(i === 6 || i === 10) && (
-                    <div key={`break-${i}`} className="w-full" />
+                    <div
+                      key={`break-${i}`}
+                      className="hidden sm:block w-full"
+                    />
                   )}
                   <div
                     key={cor}
@@ -89,14 +92,16 @@ export default function Itens({ dados }) {
                 </React.Fragment>
               ))}
             </div>
-            <div className="flex flex-col items-end w-full px-4 text-gray-500 font-medium -mt-4">
+            <div className="flex flex-col items-end w-full px-4 text-gray-500 font-medium sm:-mt-4">
               <p className="text-left text-sm">
                 a partir de <br />
                 <span className="font-extrabold text-2xl leading-5 text-gray-600">
                   R$ {valorFinal(item.valor_home)}
                 </span>
               </p>
-              <p className="text-sm tracking-tight">gerado pela melhor oferta</p>
+              <p className="text-sm tracking-tight">
+                gerado pela melhor oferta
+              </p>
             </div>
           </div>
           <Link
