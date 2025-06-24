@@ -1,19 +1,26 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAppContext } from "context/AppProvider";
 import Image from "next/image";
 import { arrumarTextoMaiusculo } from "utils/limitarTexto";
+import { Alert, Snackbar } from "@mui/material";
 
 export default function Carrinho({ open, onClose }) {
   const { itens, aumentarQtd, diminuirQtd, removerItem } = useAppContext();
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const valorTotal = itens.reduce(
     (acc, curr) => acc + curr.qtd * curr.valor_home,
     0
   );
+
+  const handleClose = (_, reason) => {
+    if (reason === "clickaway") return;
+    setSnackbarOpen(false);
+  };
 
   return (
     <Drawer anchor="right" open={open} onClose={onClose}>
@@ -25,9 +32,7 @@ export default function Carrinho({ open, onClose }) {
         }}
       >
         <div className="flex w-full justify-between mb-4">
-          <h1 className="text-2xl text-center font-bold">
-            Resumo do Carrinho
-          </h1>
+          <h1 className="text-2xl text-center font-bold">Resumo do Carrinho</h1>
           <button className="cursor-pointer" onClick={onClose}>
             <CloseIcon sx={{ width: 20 }} />
           </button>
@@ -87,10 +92,24 @@ export default function Carrinho({ open, onClose }) {
             <button
               className="mt-6 bg-[#80BC00] text-white py-2 px-4 rounded-md text-sm font-bold 
         hover:bg-[#6aa500] transition w-full cursor-pointer"
-              onClick={() => console.log("compra realizada com sucesso")}
+              onClick={() => setSnackbarOpen(true)}
             >
               FINALIZAR COMPRA
             </button>
+            <Snackbar
+              open={snackbarOpen}
+              onClose={handleClose}
+              autoHideDuration={4000}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                Compra efetuada com sucesso!
+              </Alert>
+            </Snackbar>
           </div>
         )}
       </div>
