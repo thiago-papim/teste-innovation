@@ -30,9 +30,9 @@ export default function Itens({ dados }) {
   };
 
   return (
-    <div className="flex gap-8 flex-wrap justify-center mt-10 px-2 sm:mx-20">
+    <div className="flex sm:gap-8 gap-3 flex-wrap justify-center mt-10 px-2 sm:mx-20">
       {dados.map((item, i) => (
-        <div key={i} className="mb-10 sm:w-60 w-36 flex flex-col items-center mx-5">
+        <div key={i} className="mb-10 sm:w-68 w-36 flex flex-col items-center">
           <div className="h-20 mb-2">
             <p className="font-bold sm:text-xl opacity-80 text-center leading-6 line-clamp-2 overflow-hidden text-ellipsis break-words">
               {item.nome}
@@ -55,7 +55,7 @@ export default function Itens({ dados }) {
               width={300}
               height={200}
             />
-            <div className="relative flex border-2 bg-white border-gray-100 mr-5 rounded-tr-xl border-l-0 overflow-visible sm:w-[70%] w-32">
+            <div className="relative flex border-2 bg-white border-gray-100 mr-5 rounded-tr-xl border-l-0 overflow-visible sm:lg:w-[70%] w-32">
               <div className="relative z-10 -mt-4 ml-2 bg-white rounded-full p-1 w-16 sm:w-full">
                 <Image
                   src="/images/caixa.svg"
