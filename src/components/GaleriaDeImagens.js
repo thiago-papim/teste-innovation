@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import Image from "next/image";
 
@@ -10,10 +8,12 @@ export default function GaleriaDeImagens({ imagens = [] }) {
     <div className="flex flex-col items-center gap-4 w-full bg-red-20">
       <div className="relative w-full max-w-md aspect-[4/3] rounded-lg shadow-xl overflow-hidden">
         <Image
+          width={800}
+          height={600}
+          layout="responsive"
           src={imagemPrincipal}
           alt="Imagem principal"
-          fill
-          className="object-contain"
+          className="object-cover"
         />
       </div>
 
@@ -27,9 +27,11 @@ export default function GaleriaDeImagens({ imagens = [] }) {
             onClick={() => setImagemPrincipal(img)}
           >
             <Image
+              width={500}
+              height={500}
+              layout="responsive"
               src={img}
               alt={`Miniatura ${i + 1}`}
-              fill
               className="object-cover rounded"
             />
           </div>

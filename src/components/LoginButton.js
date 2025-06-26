@@ -1,32 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { styled } from "../../stitches.config";
-
-const LoginLink = styled("button", {
-  display: "inline-flex",
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundColor: "white",
-  color: "black",
-  cursor: "pointer",
-  height: "50px",
-  width: "200px",
-  borderRadius: "100px",
-  userSelect: "none",
-  fontWeight: "bold",
-  border: "none",
-  outline: "none",
-  "&:hover": {
-    backgroundColor: "#f0f0f0",
-  },
-});
 
 export default function ButtonLogin() {
   return (
     <div className="flex justify-center mt-4">
       <Link href="/produtos" passHref>
-        <LoginLink>Login</LoginLink>
+        <a className="inline-flex items-center justify-center h-[50px] w-[200px] rounded-full bg-white text-black font-bold no-underline cursor-pointer select-none border border-gray-300 hover:bg-gray-100">
+          Login
+        </a>
       </Link>
     </div>
   );

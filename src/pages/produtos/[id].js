@@ -1,45 +1,68 @@
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
 import CarrinhoItem from "components/CarrinhoItem";
 import GaleriaDeImagens from "components/GaleriaDeImagens";
 import Header from "components/Header";
 import { arrumarTextoMaiusculo } from "utils/limitarTexto";
+import Loading from "components/Loading";
 
-export async function generateMetadata({ params }) {
-  const resolvedParams = await params;
-  const { id } = resolvedParams;
+export default function Produto() {
+  const router = useRouter();
+  const { id } = router.query;
 
-  const response = await fetch(
-    `https://apihomolog.innovationbrindes.com.br/api/site/v2/produto/${id}`
-  );
-  const data = await response.json();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const titulo = arrumarTextoMaiusculo(data.nome);
+  useEffect(() => {
+    if (!id) return;
 
-  return {
-    title: titulo + " | Innovation Brindes",
-  };
-}
+    const fetchProduto = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `https://apihomolog.innovationbrindes.com.br/api/site/v2/produto/${id}`
+        );
+        if (!response.ok) throw new Error(`Erro: ${response.status}`);
 
-export default async function Produto({ params }) {
-  const { id } = await params;
+        const json = await response.json();
+        const valorFinal =
+          json.valor_home === "0.00" || json.valor_home === "0.0"
+            ? "10.00"
+            : json.valor_home;
+        json.valor_home = valorFinal;
 
-  const response = await fetch(
-    `https://apihomolog.innovationbrindes.com.br/api/site/v2/produto/${id}`,
-    { cache: "no-store" }
-  );
-  const data = await response.json();
+        setData(json);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const valorFinal =
-    data.valor_home === ("0.00" || "0.0") ? "10.00" : data.valor_home;
-    
-  data.valor_home = valorFinal;
+    fetchProduto();
+  }, [id]);
+
+  if (loading)
+    return (
+      <>
+        <Header />
+        <Loading />
+      </>
+    );
 
   const verificaCores = data.cores?.length > 0;
-  const imagens = data.img_produtos.map((image) => image.url);
+  const imagens = data.img_produtos?.map((image) => image.url) || [];
 
   return (
     <div className="bg-gray-200 min-h-screen">
-      <Header />
+      <Head>
+        <title>{arrumarTextoMaiusculo(data.nome)} | Innovation Brindes</title>
+        <meta name="description" content={data.caracteristicas} />
+      </Head>
 
+      <Header />
       <div className="flex flex-col lg:flex-row w-[90%] max-w-6xl mx-auto mt-10 bg-white rounded-xl shadow-lg overflow-hidden p-4">
         <div className="w-full lg:w-1/2 flex justify-center items-center">
           <GaleriaDeImagens imagens={imagens} />

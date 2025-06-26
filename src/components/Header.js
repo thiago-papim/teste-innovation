@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { Badge } from "@mui/material";
@@ -26,7 +24,7 @@ export default function Header() {
           src="/images/logo-innovation-semfundo.png"
           alt="Descrição"
           width={200}
-          height={400}
+          height={60}
           priority
         />
       </Link>
@@ -50,7 +48,7 @@ export default function Header() {
             src="/images/imagem-thiago.jpeg"
             alt="Descrição"
             width={90}
-            height={400}
+            height={90}
             priority
           />
         </div>

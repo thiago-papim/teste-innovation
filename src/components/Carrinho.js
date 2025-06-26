@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import CloseIcon from "@mui/icons-material/Close";
@@ -39,7 +37,7 @@ export default function Carrinho({ open, onClose }) {
         </div>
         {itens.length > 0 ? (
           itens.map((item, i) => (
-            <div key={i} className="flex flex-col border-t-1">
+            <div key={i} className="flex flex-col border-t-2 py-2">
               <div className="flex items-center">
                 <button
                   className="cursor-pointer p-2"
@@ -48,11 +46,10 @@ export default function Carrinho({ open, onClose }) {
                   <CloseIcon sx={{ width: 20 }} />
                 </button>
                 <Image
-                  className="p-0"
                   src={item.img_home_produto}
                   alt="img-produto"
-                  width={70}
-                  height={200}
+                  width={100}
+                  height={100}
                 />
                 <p className="text-center font-bold h-12 overflow-hidden w-72 px-2">
                   {arrumarTextoMaiusculo(item.nome)}
@@ -83,7 +80,7 @@ export default function Carrinho({ open, onClose }) {
         )}
         {itens.length > 0 && (
           <div>
-            <p className="py-5 mt-5 border-t-1 font-bold text-2xl">
+            <p className="py-5 mt-5 border-t-2 font-bold text-2xl">
               Valor Total ={" "}
               <span className="text-green-700">
                 R$ {valorTotal.toFixed(2).replace(".", ",")}

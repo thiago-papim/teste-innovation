@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { styled } from "../../stitches.config";
 import { Lock, LockOpen, Person } from "@mui/icons-material";
